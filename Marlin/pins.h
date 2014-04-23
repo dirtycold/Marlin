@@ -2587,6 +2587,7 @@
 
  #define FAN_PIN 39
  #define FAN2_PIN 35
+ #define CONTROLLERFAN_PIN 35
  #define PS_ON_PIN -1
  #define KILL_PIN -1
 
