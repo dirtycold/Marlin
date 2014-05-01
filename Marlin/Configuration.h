@@ -72,7 +72,7 @@
 // 310 = Mega Controller
 
 #ifndef MOTHERBOARD
-#define MOTHERBOARD 7
+#define MOTHERBOARD 310
 #endif
 
 // Define this to set a custom name for your generic Mendel,
@@ -458,7 +458,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 // The MakerLab Mini Panel with graphic controller and SD support
 // http://reprap.org/wiki/Mini_panel
-//#define MINIPANEL
+#define MINIPANEL
 
 // The MaKr3d Makr-Panel with graphic controller and SD support
 // http://reprap.org/wiki/MaKr3d_MaKrPanel

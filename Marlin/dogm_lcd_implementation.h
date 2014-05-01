@@ -138,8 +138,8 @@ static void lcd_implementation_init()
 			u8g.setFont(u8g_font_6x10_marlin);
 			u8g.drawStr(62,28,"by ErikZalm");
 			u8g.drawStr(62,41,"DOGM128 LCD");
-			u8g.setFont(u8g_font_5x8);
-			u8g.drawStr(62,48,"enhancements");
+			u8g.setFont(chinese);
+			u8g.drawStr(62,48,"\xa1\xa2");
 			u8g.setFont(u8g_font_5x8);
 			u8g.drawStr(62,55,"by STB, MM");
 			u8g.drawStr(62,61,"uses u");
@@ -337,7 +337,7 @@ static void lcd_implementation_status_screen()
  u8g.print('%');
 
  // Status line
- u8g.setFont(FONT_STATUSMENU);
+ u8g.setFont(chinese/*FONT_STATUSMENU*/);
  u8g.setPrintPos(0,61);
  u8g.print(lcd_status_message);
 
