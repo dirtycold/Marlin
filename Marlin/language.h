@@ -16,6 +16,7 @@
 // 7  Italian
 // 8  Portuguese
 // 9  Finnish
+//10 Chinese
 
 #ifndef LANGUAGE_CHOICE
 #define LANGUAGE_CHOICE 10  // Pick your language from the list above
@@ -114,7 +115,7 @@
 	#define MSG_RESTORE_FAILSAFE "Restore Failsafe"
 	#define MSG_REFRESH "Refresh"
 	#define MSG_WATCH "Info screen"
-	#define MSG_PREPARE "Prepare\x7f\x80\x81\x82\x83"
+	#define MSG_PREPARE "Prepare"
 	#define MSG_TUNE "Tune"
 	#define MSG_PAUSE_PRINT "Pause Print"
 	#define MSG_RESUME_PRINT "Resume Print"
@@ -1573,7 +1574,7 @@
 #if LANGUAGE_CHOICE == 10
 
 // LCD Menu Messages
-	#define WELCOME_MSG MACHINE_NAME "\x88\x89\x90\x91"//准备打印Ready.
+	#define WELCOME_MSG MACHINE_NAME "\x88\x89\x8a\x8b"//准备打印Ready.
 	#define MSG_SD_INSERTED "\x8c\x8d\x8e\x8f\x90\x91"//存储卡已插入Card inserted
 	#define MSG_SD_REMOVED "\x8c\x8d\x8e\x8f\x92\x93"//存储卡已拔出Card removed
 	#define MSG_MAIN "\x94\x95\x96"//主菜单Main
@@ -1585,66 +1586,66 @@
 	#define MSG_PREHEAT_PLA_SETTINGS "PLA\xa5\xa6\xa3\xa4"//PLA预热设定Preheat PLA Conf
 	#define MSG_PREHEAT_ABS "\xa5\xa6 ABS"//预热ABS Preheat ABS
 	#define MSG_PREHEAT_ABS_SETTINGS "ABS\xa5\xa6\xa3\xa4"//ABS预热设定Preheat ABS Conf
-	#define MSG_COOLDOWN "\xa7\xa8"//降温Cooldown
-	#define MSG_SWITCH_PS_ON "\x90\x99\xa9\xaa"//打开电源Switch Power On
-	#define MSG_SWITCH_PS_OFF "\x9b\x9c\xa9\xaa"//关闭电源Switch Power Off
-	#define MSG_EXTRUDE "E\xab\x93"//挤出Extrude
-	#define MSG_RETRACT "E\xa0\xac"//回收Retract
-	#define MSG_MOVE_AXIS "\xad\x98\xae"//移动轴Move Axis
-	#define MSG_SPEED "\xaf\xb0"//速度Speed
-	#define MSG_NOZZLE "\xab\x93\xb1"//挤出头Nozzle
-	#define MSG_NOZZLE1 "\xab\x93\xb1 2"//Nozzle2
-	#define MSG_NOZZLE2 "\xab\x93\xb1 3"//Nozzle3
-	#define MSG_BED "\xa6\xb2"//热床Bed
-	#define MSG_FAN_SPEED "\xb3\xb4\xaf\xb0"//风扇速度Fan speed
+	#define MSG_COOLDOWN "\xa7\xa8\xff\xff"//降温Cooldown
+	#define MSG_SWITCH_PS_ON "\x90\x99\xa9\xaa\xff\xff\xff\xff"//打开电源Switch Power On
+	#define MSG_SWITCH_PS_OFF "\x9b\x9c\xa9\xaa\xff\xff\xff\xff"//关闭电源Switch Power Off
+	#define MSG_EXTRUDE "E\xab\x93\xff\xff"//挤出Extrude
+	#define MSG_RETRACT "E\xa0\xac\xff\xff"//回收Retract
+	#define MSG_MOVE_AXIS "\xad\x98\xae\xff\xff\xff"//移动轴Move Axis
+	#define MSG_SPEED "\xaf\xb0\xff\xff"//速度Speed
+	#define MSG_NOZZLE "\xab\x93\xb1\xff\xff\xff"//挤出头Nozzle
+	#define MSG_NOZZLE1 "\xab\x93\xb1\xff\xff\xff 2"//Nozzle2
+	#define MSG_NOZZLE2 "\xab\x93\xb1\xff\xff\xff 3"//Nozzle3
+	#define MSG_BED "\xa6\xb2\xff\xff"//热床Bed
+	#define MSG_FAN_SPEED "\xb3\xb4\xaf\xb0\xff\xff\xff\xff"//风扇速度Fan speed
 	#define MSG_FLOW "Flow"
-	#define MSG_CONTROL "\xb5\xb6"//控制Control
-	#define MSG_MIN " \002 \xb7\xb9"//最小Min
-	#define MSG_MAX " \002 \xb7\xb8"//最大Max
-	#define MSG_FACTOR " \002 \xba\xbb"//因数Fact
-	#define MSG_AUTOTEMP "\x97\x98\xb5\xa8"//自动控温Autotemp
-	#define MSG_ON "\x99"//开On 
-	#define MSG_OFF "\x9b"//关Off
+	#define MSG_CONTROL "\xb5\xb6\xff\xff"//控制Control
+	#define MSG_MIN " \002 \xb7\xb9\xff\xff"//最小Min
+	#define MSG_MAX " \002 \xb7\xb8\xff\xff"//最大Max
+	#define MSG_FACTOR " \002 \xba\xbb\xff\xff"//因数Fact
+	#define MSG_AUTOTEMP "\x97\x98\xb5\xa8\xff\xff"//自动控温Autotemp
+	#define MSG_ON "\x99\xff"//开On 
+	#define MSG_OFF "\x9b\xff"//关Off
 	#define MSG_PID_P "PID-P"
 	#define MSG_PID_I "PID-I"
 	#define MSG_PID_D "PID-D"
 	#define MSG_PID_C "PID-C"
-	#define MSG_ACC  "Accel"
+	#define MSG_ACC  "\xc1\xaf\xb0\xff\xff\xff"//加速度Accel
 	#define MSG_VXY_JERK "Vxy-jerk"
 	#define MSG_VZ_JERK "Vz-jerk"
 	#define MSG_VE_JERK "Ve-jerk"
-	#define MSG_VMAX "Vmax "
+	#define MSG_VMAX "\xb7\xb8\xaf\xb0\xff\xff\xff\xff"//最大速度Vmax 
 	#define MSG_X "x"
 	#define MSG_Y "y"
 	#define MSG_Z "z"
 	#define MSG_E "e"
-	#define MSG_VMIN "Vmin"
-	#define MSG_VTRAV_MIN "VTrav min"
-	#define MSG_AMAX "Amax "
-	#define MSG_A_RETRACT "A-retract"
-	#define MSG_XSTEPS "Xsteps/mm"
-	#define MSG_YSTEPS "Ysteps/mm"
-	#define MSG_ZSTEPS "Zsteps/mm"
-	#define MSG_ESTEPS "Esteps/mm"
-	#define MSG_RECTRACT "Rectract"
-	#define MSG_TEMPERATURE "Temperature"
-	#define MSG_MOTION "Motion"
+	#define MSG_VMIN "\xb7\xb9\xaf\xb0\xff\xff\xff\xff"//最小速度Vmin
+	#define MSG_VTRAV_MIN "\xb7\xb9\xad\x98\xaf\xb0\xff\xff\xff\xff\xff\xff"//最小移动速度VTrav min
+	#define MSG_AMAX "\xb7\xb8\xc1\xaf\xb0\xff\xff\xff\xff"//最大加速度Amax 
+	#define MSG_A_RETRACT "E\xa0\xac\xc1\xaf\xb0\xff\xff\xff\xff\xff"//E回收加速度A-retract
+	#define MSG_XSTEPS "X\xae\x9d\xc2mm\xff\xff"//X步每mmXsteps/mm
+	#define MSG_YSTEPS "Y\xae\x9d\xc2mm\xff\xff"//Y步每mmYsteps/mm
+	#define MSG_ZSTEPS "Z\xae\x9d\xc2mm\xff\xff"//Z步每mmZsteps/mm
+	#define MSG_ESTEPS "E\xae\x9d\xc2mm\xff\xff"//E步每mmEsteps/mm
+	#define MSG_RECTRACT "E\xa0\xac\xff\xff"//回收Rectract
+	#define MSG_TEMPERATURE "\xa8\xb0\xff\xff"//温度Temperature
+	#define MSG_MOTION "\xc3\x98\xff\xff"//运动Motion
 	#define MSG_CONTRAST "LCD contrast"
-	#define MSG_STORE_EPROM "Store memory"
-	#define MSG_LOAD_EPROM "Load memory"
-	#define MSG_RESTORE_FAILSAFE "Restore Failsafe"
-	#define MSG_REFRESH "Refresh"
-	#define MSG_WATCH "\xbc\xbd\xbe\xbf"//信息界面Info screen
-	#define MSG_PREPARE "\x88\x89"//Prepare
-	#define MSG_TUNE "Tune"
-	#define MSG_PAUSE_PRINT "Pause Print"
-	#define MSG_RESUME_PRINT "Resume Print"
-	#define MSG_STOP_PRINT "Stop Print"
-	#define MSG_CARD_MENU "Print from SD"
-	#define MSG_NO_CARD "\xc0\x8c\x8d\x8e"//无存储卡No Card
-	#define MSG_DWELL "Sleep..."
+	#define MSG_STORE_EPROM "\xc4\x8c\xc5\xbb\xff\xff\xff\xff"//保存参数Store memory
+	#define MSG_LOAD_EPROM "\xc6\x91\xc5\xbb\xff\xff\xff\xff"//载入参数Load memory
+	#define MSG_RESTORE_FAILSAFE "\xc7\xc8\x93\xc9\xa3\xa4\xff\xff\xff\xff"//恢复出厂设定Restore Failsafe
+	#define MSG_REFRESH "\xca\xcb\xff\xff"//刷新Refresh
+	#define MSG_WATCH "\xbc\xbd\xbe\xbf\xff\xff\xff\xff"//信息界面Info screen
+	#define MSG_PREPARE "\x88\x89\xff\xff"//Prepare
+	#define MSG_TUNE "\xcc\xcd\xff\xff"//调整Tune
+	#define MSG_PAUSE_PRINT "\xce\xcf\x90\x91\xff\xff\xff\xff"//暂停打印Pause Print
+	#define MSG_RESUME_PRINT "\xd0\xd1\x90\x91\xff\xff\xff\xff"//继续打印Resume Print
+	#define MSG_STOP_PRINT "\xcf\xd2\x90\x91"//停止打印Stop Print
+	#define MSG_CARD_MENU "\xd3\x8c\x8d\x8e\xff\xff\xff\xff"//由存储卡打印Print from SD
+	#define MSG_NO_CARD "\xc0\x8c\x8d\x8e\xff\xff\xff\xff"//无存储卡No Card
+	#define MSG_DWELL "\xd4\xd5\x84 ..\xff\xff\xff"//休眠中..Sleep...
 	#define MSG_USERWAIT "Wait for user..."
-	#define MSG_RESUMING "Resuming print"
+	#define MSG_RESUMING "\x90\x91\xc7\xc8\x84\xff\xff\xff\xff"//打印恢复中Resuming print
 	#define MSG_NO_MOVE "No move."
 	#define MSG_KILLED "KILLED. "
 	#define MSG_STOPPED "STOPPED. "
