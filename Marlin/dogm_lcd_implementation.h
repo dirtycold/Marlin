@@ -374,7 +374,11 @@ static void lcd_implementation_drawmenu_generic(uint8_t row, const char* pstr, c
 		if ((pre_char == '>') || (pre_char == LCD_STR_UPLEVEL[0] ))
 		   {
 			u8g.setColorIndex(1);		// black on white
+#if LANGUAGE_CHOICE == 10
+			u8g.drawBox (0, row*DOG_CHAR_HEIGHT + 2, 128, DOG_CHAR_HEIGHT);
+#else
 			u8g.drawBox (0, row*DOG_CHAR_HEIGHT + 3, 128, DOG_CHAR_HEIGHT);
+#endif
 			u8g.setColorIndex(0);		// following text must be white on black
 		   } else u8g.setColorIndex(1); // unmarked text is black on white
 		
