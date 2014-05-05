@@ -143,15 +143,22 @@ static void lcd_implementation_init()
 			u8g.drawStr(62,19,"V1.0.0 RC2-mm");
 			u8g.setFont(u8g_font_6x10_marlin);
 			u8g.drawStr(62,28,"by ErikZalm");
-                    #if LANGUAGE_CHOICE == 10
-                        u8g.setFont(chinese);
-                        u8g.drawStr(62,40,"\x84\x85\x86\x87 By");
-                    #endif
-			
-			
+  #if LANGUAGE_CHOICE == 10
+      u8g.setFont(chinese);
+      u8g.drawStr(62,40,"\x84\x85\x86\x87 By");
 			u8g.drawStr(62,52,"\x7f\x80\x81\x82\x83");
-			//u8g.setFont(u8g_font_5x8);
 			u8g.drawStr(62,63,"MakerLab.me");
+  #else
+			u8g.drawStr(62,41,"DOGM128 LCD");
+			u8g.setFont(u8g_font_5x8);
+			u8g.drawStr(62,48,"enhancements");
+			u8g.setFont(u8g_font_5x8);
+			u8g.drawStr(62,55,"by STB, MM");
+			u8g.drawStr(62,61,"uses u");
+			u8g.drawStr90(92,57,"8");
+			u8g.drawStr(100,61,"glib");
+  #endif
+			//u8g.setFont(u8g_font_5x8);
 			//u8g.drawStr(62,61,"uses u");
 			//u8g.drawStr90(92,57,"8");
 			//u8g.drawStr(100,61,"glib");
@@ -348,11 +355,12 @@ static void lcd_implementation_status_screen()
 
  // Status line
 #if LANGUAGE_CHOICE == 10
- u8g.setFont(chinese/*FONT_STATUSMENU*/);
+ u8g.setFont(chinese);
+ u8g.setPrintPos(0,63);
 #else
  u8g.setFont(FONT_STATUSMENU);
+ u8g.setPrintPos(0,61);
 #endif
- u8g.setPrintPos(0,63);
  u8g.print(lcd_status_message);
 
 }
@@ -476,14 +484,18 @@ static void lcd_implementation_drawmenu_setting_edit_generic_P(uint8_t row, cons
 void lcd_implementation_drawedit(const char* pstr, char* value)
 {
 		u8g.setPrintPos(0 * DOG_CHAR_WIDTH_LARGE, (u8g.getHeight() - 1 - DOG_CHAR_HEIGHT_LARGE) - (1 * DOG_CHAR_HEIGHT_LARGE) - START_ROW );
-              #if LANGUAGE_CHOICE == 10 
-                u8g.setFont(chinese);
-              #else
-                u8g.setFont(u8g_font_9x18);
-              #endif
+  #if LANGUAGE_CHOICE == 10 
+    u8g.setFont(chinese);
+  #else
+    u8g.setFont(u8g_font_9x18);
+  #endif
 		lcd_printPGM(pstr);
 		u8g.print(':');
+  #if LANGUAGE_CHOICE == 10 
 		u8g.setPrintPos((12 - strlen(value)) * DOG_CHAR_WIDTH_LARGE, (u8g.getHeight() - 1 - DOG_CHAR_HEIGHT_LARGE) - (1 * DOG_CHAR_HEIGHT_LARGE) - START_ROW );
+  #else
+		u8g.setPrintPos((14 - strlen(value)) * DOG_CHAR_WIDTH_LARGE, (u8g.getHeight() - 1 - DOG_CHAR_HEIGHT_LARGE) - (1 * DOG_CHAR_HEIGHT_LARGE) - START_ROW );
+  #endif
 		u8g.print(value);
 }
 

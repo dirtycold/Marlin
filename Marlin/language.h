@@ -33,6 +33,9 @@
 #elif MOTHERBOARD == 77
 	#define MACHINE_NAME "3Drag"
 	#define FIRMWARE_URL "http://3dprint.elettronicain.it/"
+#elif MOTHERBOARD == 310
+	#define MACHINE_NAME "MeBot"
+	#define FIRMWARE_URL "http://makerlab.me/"
 #else
 	#ifdef CUSTOM_MENDEL_NAME
 		#define MACHINE_NAME CUSTOM_MENDEL_NAME

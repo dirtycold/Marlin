@@ -1,4 +1,9 @@
 ==========================
+Marlin 中文版本
+==========================
+这个版本是由[MakerLab](http://makerlab.me/?r=gh)在原版基础上添加了中文LCD显示的支持，让新手及对英文不熟悉的朋友可以无障碍在LCD上进行对3D打印机的控制。
+
+==========================
 Marlin 3D Printer Firmware
 ==========================
 Marlin has a GPL license because I believe in open development.
