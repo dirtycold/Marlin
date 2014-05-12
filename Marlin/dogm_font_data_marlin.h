@@ -335,6 +335,20 @@ const u8g_fntpgm_uint8_t u8g_font_6x10_marlin[2617] U8G_SECTION(".progmem.u8g_fo
   248,168,136,136,136,136,136,168,248,5,10,10,6,0,254,32,
   80,80,80,80,136,168,168,136,112};
 
+/*
+  Fontname: -Firefly-Firefly New Sung-Medium-R-Normal--11-110-75-75-P-109-ISO10646-1
+  Copyright: 
+  Capital A Height: 9, '1' Height: 9
+  Calculated Max Values w=11 h=11 x= 4 y= 6 dx=11 dy= 0 ascent=10 len=22
+  Font Bounding box     w=11 h=11 x= 0 y=-1
+  Calculated Min Values           x= 0 y=-1 dx= 0 dy= 0
+  Pure Font   ascent = 9 descent=-1
+  X Font      ascent = 9 descent=-1
+  Max Font    ascent =10 descent=-1
+  
+  Added By MakerLab.me for Chinese Support.
+*/
+
 #include "utility/u8g.h"
 
 const u8g_fntpgm_uint8_t chinese[3819] U8G_SECTION(".progmem.chinese") = {
