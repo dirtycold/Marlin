@@ -25,7 +25,7 @@
 
 // This determines the communication speed of the printer
 // This determines the communication speed of the printer
-#define BAUDRATE 250000
+#define BAUDRATE 115200
 
 // This enables the serial port associated to the Bluetooth interface
 //#define BTENABLED              // Enable BT interface on AT90USB devices
@@ -123,10 +123,10 @@
 // 52 is 200k thermistor - ATC Semitec 204GT-2 (1k pullup)
 // 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan & J-Head) (1k pullup)
 
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 -1
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
-#define TEMP_SENSOR_BED 1
+#define TEMP_SENSOR_BED 0
 
 // This makes temp sensor 1 a redundant sensor for sensor 0. If the temperatures difference between these sensors is to high the print will be aborted.
 //#define TEMP_SENSOR_1_AS_REDUNDANT
@@ -140,7 +140,7 @@
 // The minimal temperature defines the temperature below which the heater will not be enabled It is used
 // to check that the wiring to the thermistor is not broken.
 // Otherwise this would lead to the heater being powered on all the time.
-#define HEATER_0_MINTEMP 5
+#define HEATER_0_MINTEMP 0
 #define HEATER_1_MINTEMP 5
 #define HEATER_2_MINTEMP 5
 #define BED_MINTEMP 5
@@ -237,7 +237,7 @@
 //if PREVENT_DANGEROUS_EXTRUDE is on, you can still disable (uncomment) very long bits of extrusion separately.
 #define PREVENT_LENGTHY_EXTRUDE
 
-#define EXTRUDE_MINTEMP 170
+#define EXTRUDE_MINTEMP 160
 #define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
 
 //===========================================================================
@@ -313,11 +313,11 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define max_software_endstops true  // If true, axis won't move to coordinates greater than the defined lengths below.
 
 // Travel limits after homing
-#define X_MAX_POS 205
+#define X_MAX_POS 390
 #define X_MIN_POS 0
-#define Y_MAX_POS 205
+#define Y_MAX_POS 275
 #define Y_MIN_POS 0
-#define Z_MAX_POS 200
+#define Z_MAX_POS 120
 #define Z_MIN_POS 0
 
 #define X_MAX_LENGTH (X_MAX_POS - X_MIN_POS)
@@ -386,7 +386,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 
 // The position of the homing switches
-//#define MANUAL_HOME_POSITIONS  // If defined, MANUAL_*_HOME_POS below will be used
+#define MANUAL_HOME_POSITIONS  // If defined, MANUAL_*_HOME_POS below will be used
 //#define BED_CENTER_AT_0_0  // If defined, the center of the bed is at (X=0, Y=0)
 
 //Manual homing switch locations:
@@ -402,8 +402,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 // default settings
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {78.7402,78.7402,200.0*8/3,760*1.1}  // default steps per unit for Ultimaker
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 25}    // (mm/sec)
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {88.88,88.88,400.0,94.34}  // default steps per unit for Ultimaker
+#define DEFAULT_MAX_FEEDRATE          {200, 200, 100, 200}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {9000,9000,100,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
@@ -436,8 +436,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //#define EEPROM_CHITCHAT
 
 // Preheat Constants
-#define PLA_PREHEAT_HOTEND_TEMP 180
-#define PLA_PREHEAT_HPB_TEMP 70
+#define PLA_PREHEAT_HOTEND_TEMP 193
+#define PLA_PREHEAT_HPB_TEMP 0
 #define PLA_PREHEAT_FAN_SPEED 255   // Insert Value between 0 and 255
 
 #define ABS_PREHEAT_HOTEND_TEMP 240
@@ -563,7 +563,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 
   #ifdef LCD_USE_I2C_BUZZER
-	#define LCD_FEEDBACK_FREQUENCY_HZ 1000
+	#define LCD_FEEDBACK_FREQUENCY_HZ 1500
 	#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 100
   #endif
 

@@ -135,19 +135,19 @@ static void lcd_implementation_init()
 	u8g.firstPage();
 	do {
 			// RepRap init bmp
-			u8g.drawBitmapP(0,0,START_BMPBYTEWIDTH,START_BMPHEIGHT,start_bmp);
+			//u8g.drawBitmapP(0,0,START_BMPBYTEWIDTH,START_BMPHEIGHT,start_bmp);
 			// Welcome message
 			u8g.setFont(u8g_font_6x10_marlin);
-			u8g.drawStr(62,10,"MARLIN"); 
-			u8g.setFont(u8g_font_5x8);
-			u8g.drawStr(62,19,"V1.0.0 RC2-mm");
-			u8g.setFont(u8g_font_6x10_marlin);
-			u8g.drawStr(62,28,"by ErikZalm");
+			u8g.drawStr(10,10,"XJ3DP"); 
+			//u8g.setFont(u8g_font_5x8);
+			u8g.drawStr(10,19,"Open-source Edition");
+			//u8g.setFont(u8g_font_6x10_marlin);
+			u8g.drawStr(10,28,"Based on Marlin");
   #if LANGUAGE_CHOICE == 10
-      u8g.setFont(chinese);
-      u8g.drawStr(62,40,"\x84\x85\x86\x87 By");
-			u8g.drawStr(62,52,"\x7f\x80\x81\x82\x83");
-			u8g.drawStr(62,63,"MakerLab.me");
+			//u8g.setFont(chinese);
+			u8g.drawStr(10,40,"A Product Of");
+			u8g.drawStr(10,49,"Shaanxi Hengtong");
+			u8g.drawStr(10,58,"http://china-rpm.com");
   #else
 			u8g.drawStr(62,41,"DOGM128 LCD");
 			u8g.setFont(u8g_font_5x8);
@@ -162,7 +162,9 @@ static void lcd_implementation_init()
 			//u8g.drawStr(62,61,"uses u");
 			//u8g.drawStr90(92,57,"8");
 			//u8g.drawStr(100,61,"glib");
+                        
 	   } while( u8g.nextPage() );
+            delay(10000);
 }
 
 static void lcd_implementation_clear()
