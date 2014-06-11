@@ -1641,14 +1641,14 @@
 	#define MSG_WATCH "\xbc\xbd\xbe\xbf\xff\xff\xff\xff"//信息界面Info screen
 	#define MSG_PREPARE "\x88\x89\xff\xff"//Prepare
 	#define MSG_TUNE "\xcc\xcd\xff\xff"//调整Tune
-	#define MSG_PAUSE_PRINT "\xce\xcf\x90\x91\xff\xff\xff\xff"//暂停打印Pause Print
-	#define MSG_RESUME_PRINT "\xd0\xd1\x90\x91\xff\xff\xff\xff"//继续打印Resume Print
-	#define MSG_STOP_PRINT "\xcf\xd2\x90\x91"//停止打印Stop Print
+	#define MSG_PAUSE_PRINT "\xce\xcf\x8a\x8b\xff\xff\xff\xff"//暂停打印Pause Print
+	#define MSG_RESUME_PRINT "\xd0\xd1\x8a\x8b\xff\xff\xff\xff"//继续打印Resume Print
+	#define MSG_STOP_PRINT "\xcf\xd2\x8a\x8b"//停止打印Stop Print
 	#define MSG_CARD_MENU "\xd3\x8c\x8d\x8e\xff\xff\xff\xff"//由存储卡打印Print from SD
 	#define MSG_NO_CARD "\xc0\x8c\x8d\x8e\xff\xff\xff\xff"//无存储卡No Card
 	#define MSG_DWELL "\xd4\xd5\x84 ..\xff\xff\xff"//休眠中..Sleep...
 	#define MSG_USERWAIT "Wait for user..."
-	#define MSG_RESUMING "\x90\x91\xc7\xc8\x84\xff\xff\xff\xff"//打印恢复中Resuming print
+	#define MSG_RESUMING "\x8a\x8b\xc7\xc8\x84\xff\xff\xff\xff"//打印恢复中Resuming print
 	#define MSG_NO_MOVE "No move."
 	#define MSG_KILLED "KILLED. "
 	#define MSG_STOPPED "STOPPED. "
