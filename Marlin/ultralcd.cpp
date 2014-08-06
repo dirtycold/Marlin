@@ -94,7 +94,7 @@ static void menu_action_setting_edit_callback_long5(const char* pstr, unsigned l
 
 #if !defined(LCD_I2C_VIKI)
   #ifndef ENCODER_STEPS_PER_MENU_ITEM
-    #define ENCODER_STEPS_PER_MENU_ITEM 5
+    #define ENCODER_STEPS_PER_MENU_ITEM 2
   #endif
   #ifndef ENCODER_PULSES_PER_STEP
     #define ENCODER_PULSES_PER_STEP 1
@@ -1192,8 +1192,11 @@ void lcd_buttons_update()
 {
 #ifdef NEWPANEL
     uint8_t newbutton=0;
-    if(READ(BTN_EN1)==0)  newbutton|=EN_A;
-    if(READ(BTN_EN2)==0)  newbutton|=EN_B;
+    //if(READ(BTN_EN1)==0)  newbutton|=EN_A;
+    if((blocking_enc<millis()) && (READ(BTN_EN1)==0))
+	newbutton|=EN_A;
+    if((blocking_enc<millis()) && (READ(BTN_EN2)==0))
+        newbutton|=EN_B;
   #if BTN_ENC > 0
     if((blocking_enc<millis()) && (READ(BTN_ENC)==0))
         newbutton |= EN_C;
@@ -1233,42 +1236,52 @@ void lcd_buttons_update()
 #endif//!NEWPANEL
 
     //manage encoder rotation
-    uint8_t enc=0;
+
     if(buttons&EN_A)
-        enc|=(1<<0);
-    if(buttons&EN_B)
-        enc|=(1<<1);
-    if(enc != lastEncoderBits)
     {
-        switch(enc)
-        {
-        case encrot0:
-            if(lastEncoderBits==encrot3)
-                encoderDiff++;
-            else if(lastEncoderBits==encrot1)
-                encoderDiff--;
-            break;
-        case encrot1:
-            if(lastEncoderBits==encrot0)
-                encoderDiff++;
-            else if(lastEncoderBits==encrot2)
-                encoderDiff--;
-            break;
-        case encrot2:
-            if(lastEncoderBits==encrot1)
-                encoderDiff++;
-            else if(lastEncoderBits==encrot3)
-                encoderDiff--;
-            break;
-        case encrot3:
-            if(lastEncoderBits==encrot2)
-                encoderDiff++;
-            else if(lastEncoderBits==encrot0)
-                encoderDiff--;
-            break;
-        }
+       encoderDiff=-1;
     }
-    lastEncoderBits = enc;
+    if(buttons&EN_B)
+    {
+       encoderDiff=1;
+    }
+
+//     uint8_t enc=0;
+//     if(buttons&EN_A)
+//        enc|=(1<<0);
+//     if(buttons&EN_B)
+//        enc|=(1<<1);
+//     if(enc != lastEncoderBits)
+//     {
+//         switch(enc)
+//         {
+//         case encrot0:
+//             if(lastEncoderBits==encrot3)
+//                 encoderDiff++;
+//             else if(lastEncoderBits==encrot1)
+//                 encoderDiff--;
+//             break;
+//         case encrot1:
+//             if(lastEncoderBits==encrot0)
+//                 encoderDiff++;
+//             else if(lastEncoderBits==encrot2)
+//                 encoderDiff--;
+//             break;
+//         case encrot2:
+//             if(lastEncoderBits==encrot1)
+//                 encoderDiff++;
+//             else if(lastEncoderBits==encrot3)
+//                 encoderDiff--;
+//             break;
+//         case encrot3:
+//             if(lastEncoderBits==encrot2)
+//                 encoderDiff++;
+//             else if(lastEncoderBits==encrot0)
+//                 encoderDiff--;
+//             break;
+//         }
+//     }
+//     lastEncoderBits = enc;
 }
 
 void lcd_buzz(long duration, uint16_t freq)
