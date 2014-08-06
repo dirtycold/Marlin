@@ -162,9 +162,9 @@ static void lcd_implementation_init()
 			//u8g.drawStr(62,61,"uses u");
 			//u8g.drawStr90(92,57,"8");
 			//u8g.drawStr(100,61,"glib");
-                        
+			
 	   } while( u8g.nextPage() );
-            delay(10000);
+            delay(1000);
 }
 
 static void lcd_implementation_clear()
