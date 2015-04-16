@@ -1,4 +1,4 @@
-#ifndef PINS_H
+﻿#ifndef PINS_H
 #define PINS_H
 
 #define X_MS1_PIN -1
@@ -609,7 +609,7 @@
         #define BTN_EN2 33
         #define BTN_ENC 35
 
-        #define SDCARDDETECT 49
+        #define SDCARDDETECT -1
       #elif defined(LCD_I2C_PANELOLU2)
         #define BTN_EN1 47  //reverse if the encoder turns the wrong way.
         #define BTN_EN2 43

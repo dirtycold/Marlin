@@ -1,4 +1,4 @@
-/* -*- c++ -*- */
+﻿/* -*- c++ -*- */
 
 /*
     Reprap firmware based on Sprinter and grbl.
@@ -239,7 +239,7 @@ int EtoPPressure=0;
 
 #ifdef ULTIPANEL
   #ifdef PS_DEFAULT_OFF
-    bool powersupply = false;
+	  bool powersupply = false;
   #else
 	  bool powersupply = true;
   #endif
@@ -2143,6 +2143,10 @@ void process_commands()
       if(starpos!=NULL)
         *(starpos-1)='\0';
       lcd_setstatus(strchr_pointer + 5);
+	  #ifdef ULTIPANEL
+          powersupply = true;
+          LCD_MESSAGEPGM(WELCOME_PRINTING);
+	  #endif
       break;
     case 114: // M114
       SERIAL_PROTOCOLPGM("X:");

@@ -74,7 +74,7 @@
 #define LCD_STR_UPLEVEL     "\xFB"
 #define LCD_STR_REFRESH     "\xF8"
 #define LCD_STR_FOLDER      "\xF9"
-#define LCD_STR_FEEDRATE    "\xFD"
+#define LCD_STR_FEEDRATE    "\xFD" // "\x8a\x8b\xaf\xb0"
 #define LCD_STR_CLOCK       "\xFC"
 #define LCD_STR_ARROW_RIGHT "\xFA"
 
@@ -135,19 +135,19 @@ static void lcd_implementation_init()
 	u8g.firstPage();
 	do {
 			// RepRap init bmp
-			//u8g.drawBitmapP(0,0,START_BMPBYTEWIDTH,START_BMPHEIGHT,start_bmp);
+			u8g.drawBitmapP(0,0,START_BMPBYTEWIDTH,START_BMPHEIGHT,start_bmp);
 			// Welcome message
 			u8g.setFont(u8g_font_6x10_marlin);
-			u8g.drawStr(10,10,"XJ3DP"); 
+			//u8g.drawStr(10,10,"XJ3DP"); 
 			//u8g.setFont(u8g_font_5x8);
-			u8g.drawStr(10,19,"Open-source Edition");
+			//u8g.drawStr(10,19,"Open-source Edition");
 			//u8g.setFont(u8g_font_6x10_marlin);
-			u8g.drawStr(10,28,"Based on Marlin");
+			//u8g.drawStr(10,28,"Based on Marlin");
   #if LANGUAGE_CHOICE == 10
 			//u8g.setFont(chinese);
-			u8g.drawStr(10,40,"A Product Of");
-			u8g.drawStr(10,49,"Shaanxi Hengtong");
-			u8g.drawStr(10,58,"http://china-rpm.com");
+			//u8g.drawStr(10,40,"A Product Of");
+			//u8g.drawStr(10,49,"Shaanxi Hengtong");
+			//u8g.drawStr(10,58,"http://china-rpm.com");
   #else
 			u8g.drawStr(62,41,"DOGM128 LCD");
 			u8g.setFont(u8g_font_5x8);
@@ -199,20 +199,23 @@ static void lcd_implementation_status_screen()
  
  u8g.setColorIndex(1);	// black on white
  
- // Symbols menu graphics, animated fan
- if ((blink % 2) &&  fanSpeed )	u8g.drawBitmapP(9,1,STATUS_SCREENBYTEWIDTH,STATUS_SCREENHEIGHT,status_screen0_bmp);
-	else u8g.drawBitmapP(9,1,STATUS_SCREENBYTEWIDTH,STATUS_SCREENHEIGHT,status_screen1_bmp);
+       // Symbols menu graphics, animated fan
+// if ((blink % 2) &&  fanSpeed )	u8g.drawBitmapP(9,1,STATUS_SCREENBYTEWIDTH,STATUS_SCREENHEIGHT,status_screen0_bmp);
+//	else u8g.drawBitmapP(9,1,STATUS_SCREENBYTEWIDTH,STATUS_SCREENHEIGHT,status_screen1_bmp);
+ u8g.setPrintPos(0,10);
+ u8g.print(" \xa6 \xb2\  \x8a\x8b\xb1  \xb3 \xb4");
+
  
  #ifdef SDSUPPORT
- //SD Card Symbol
+      //SD Card Symbol
  u8g.drawBox(42,42,8,7);
  u8g.drawBox(50,44,2,5);
  u8g.drawFrame(42,49,10,4);
  u8g.drawPixel(50,43);
- // Progress bar
+       // Progress bar
  u8g.drawFrame(54,49,73,4);
  
- // SD Card Progress bar and clock
+        // SD Card Progress bar and clock
  u8g.setFont(FONT_STATUSMENU);
  
  if (IS_SD_PRINTING)
@@ -236,27 +239,30 @@ static void lcd_implementation_status_screen()
 			lcd_printPGM(PSTR("--:--"));
 		 }
  #endif
- 
+  
  // Extruder 1
  u8g.setFont(FONT_STATUSMENU);
- u8g.setPrintPos(6,6);
+ //u8g.setPrintPos(6,6);
+ u8g.setPrintPos(54,20);
  u8g.print(itostr3(int(degTargetHotend(0) + 0.5)));
- lcd_printPGM(PSTR(LCD_STR_DEGREE " "));
- u8g.setPrintPos(6,27);
+ lcd_printPGM(PSTR(LCD_STR_DEGREE"C"));
+ //u8g.setPrintPos(6,27);
+ u8g.setPrintPos(54,28);
  u8g.print(itostr3(int(degHotend(0) + 0.5)));
- lcd_printPGM(PSTR(LCD_STR_DEGREE " "));
- if (!isHeatingHotend(0)) u8g.drawBox(13,17,2,2);
+ lcd_printPGM(PSTR(LCD_STR_DEGREE"C"));
+
+ if (!isHeatingHotend(0)) u8g.drawBox(13,17,0,0);
 	else
 		{
 		 u8g.setColorIndex(0);	// white on black
-		 u8g.drawBox(13,17,2,2);
+		 u8g.drawBox(13,17,0,0);
 		 u8g.setColorIndex(1);	// black on white
 		}
  
  // Extruder 2
- u8g.setFont(FONT_STATUSMENU);
- #if EXTRUDERS > 1
- u8g.setPrintPos(31,6);
+// u8g.setFont(FONT_STATUSMENU);
+ /*/#if EXTRUDERS > 1
+u8g.setPrintPos(31,6);
  u8g.print(itostr3(int(degTargetHotend(1) + 0.5)));
  lcd_printPGM(PSTR(LCD_STR_DEGREE " "));
  u8g.setPrintPos(31,27);
@@ -273,9 +279,9 @@ static void lcd_implementation_status_screen()
  u8g.setPrintPos(31,27);
  u8g.print("---");
  #endif
- 
+/*/
  // Extruder 3
- u8g.setFont(FONT_STATUSMENU);
+/*/ u8g.setFont(FONT_STATUSMENU);
  # if EXTRUDERS > 2
  u8g.setPrintPos(55,6);
  u8g.print(itostr3(int(degTargetHotend(2) + 0.5)));
@@ -294,39 +300,64 @@ static void lcd_implementation_status_screen()
  u8g.setPrintPos(55,27);
  u8g.print("---");
  #endif
- 
- // Heatbed
+ /*/
+ //
+ //Heat bed
  u8g.setFont(FONT_STATUSMENU);
- u8g.setPrintPos(81,6);
+ u8g.setPrintPos(12,20);
  u8g.print(itostr3(int(degTargetBed() + 0.5)));
- lcd_printPGM(PSTR(LCD_STR_DEGREE " "));
- u8g.setPrintPos(81,27);
- u8g.print(itostr3(int(degBed() + 0.5)));
- lcd_printPGM(PSTR(LCD_STR_DEGREE " "));
- if (!isHeatingBed()) u8g.drawBox(88,18,2,2);
-	else
-		{
-		 u8g.setColorIndex(0);	// white on black
-		 u8g.drawBox(88,18,2,2);
-		 u8g.setColorIndex(1);	// black on white
-		}
+ lcd_printPGM(PSTR(LCD_STR_DEGREE"C"));
+ u8g.setPrintPos(12,28);
+ u8g.print(itostr3(int(degBed() + 0.5)));  
+ lcd_printPGM(PSTR(LCD_STR_DEGREE"C"));
  
+ 
+ u8g.drawLine(0,0,127,0);
+ u8g.drawLine(0,12,127,12);
+  
+ u8g.drawLine(0,0,0,63);
+ u8g.drawLine(44,0,44,28);
+ u8g.drawLine(85,0,85,28);
+ u8g.drawLine(127,0,127,63);
+ u8g.drawLine(0,63,127,63);
+ 
+// if (!isHeatingBed()) u8g.drawBox(88,18,0,0);
+//	else
+//		{
+//		 u8g.setColorIndex(0);	// white on black
+//		 u8g.drawBox(88,18,0,0);
+//		 u8g.setColorIndex(1);	// black on white
+//		}
+
+
+
+  
  // Fan
  u8g.setFont(FONT_STATUSMENU);
- u8g.setPrintPos(104,27);
+ u8g.setPrintPos(98,24);
  #if defined(FAN_PIN) && FAN_PIN > -1
  u8g.print(itostr3(int((fanSpeed*100)/256 + 1)));
  u8g.print("%");
  #else
- u8g.print("---");
+ u8g.print("--");
  #endif
  
  
+ // u8g.setFont(FONT_STATUSMENU);
+ // u8g.drawLine(0,12,64,12);
+ // u8g.setColorIndex(0);	// white on black
+ 
+ // u8g.setFont(FONT_STATUSMENU);
+  //u8g.drawBox(0,56,64,56);
+ // u8g.setColorIndex(0);	// white on black
+    
+ 
  // X, Y, Z-Coordinates
+
  u8g.setFont(FONT_STATUSMENU);
  u8g.drawBox(0,29,128,10);
  u8g.setColorIndex(0);	// white on black
- u8g.setPrintPos(2,37);
+u8g.setPrintPos(2,37);
  u8g.print("X");
  u8g.drawPixel(8,33);
  u8g.drawPixel(8,35);
@@ -348,20 +379,22 @@ static void lcd_implementation_status_screen()
  
  // Feedrate
  u8g.setFont(u8g_font_6x10_marlin);
- u8g.setPrintPos(3,49);
+ u8g.setPrintPos(3,50);
  u8g.print(LCD_STR_FEEDRATE[0]);
  u8g.setFont(FONT_STATUSMENU);
- u8g.setPrintPos(12,48);
+ u8g.setPrintPos(12,50);
  u8g.print(itostr3(feedmultiply));
+ 
+ //u8g.print(itostr3(int(feedrate*feedmultiply)/60/100.0));
  u8g.print('%');
 
  // Status line
 #if LANGUAGE_CHOICE == 10
  u8g.setFont(chinese);
- u8g.setPrintPos(0,63);
+ u8g.setPrintPos(2,63);
 #else
  u8g.setFont(FONT_STATUSMENU);
- u8g.setPrintPos(0,61);
+ u8g.setPrintPos(2,61);
 #endif
  u8g.print(lcd_status_message);
 

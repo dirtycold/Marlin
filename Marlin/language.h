@@ -1,4 +1,4 @@
-#ifndef LANGUAGE_H
+﻿#ifndef LANGUAGE_H
 #define LANGUAGE_H
 
 // NOTE: IF YOU CHANGE THIS FILE / MERGE THIS FILE WITH CHANGES
@@ -34,8 +34,8 @@
 	#define MACHINE_NAME "3Drag"
 	#define FIRMWARE_URL "http://3dprint.elettronicain.it/"
 #elif MOTHERBOARD == 310
-	#define MACHINE_NAME "MeBot"
-	#define FIRMWARE_URL "http://makerlab.me/"
+	#define MACHINE_NAME "XJ3DP"
+	#define FIRMWARE_URL "http://www.china-rpm.com/"
 #else
 	#ifdef CUSTOM_MENDEL_NAME
 		#define MACHINE_NAME CUSTOM_MENDEL_NAME
@@ -1577,7 +1577,8 @@
 #if LANGUAGE_CHOICE == 10
 
 // LCD Menu Messages
-	#define WELCOME_MSG MACHINE_NAME "\x88\x89\x8a\x8b"//准备打印Ready.
+	#define WELCOME_MSG MACHINE_NAME "\x88\x89\x8a\x8b"//准备打印Ready.  
+    #define WELCOME_PRINTING "\x8a\x8b\x84"//打印ING. 
 	#define MSG_SD_INSERTED "\x8c\x8d\x8e\x8f\x90\x91"//存储卡已插入Card inserted
 	#define MSG_SD_REMOVED "\x8c\x8d\x8e\x8f\x92\x93"//存储卡已拔出Card removed
 	#define MSG_MAIN "\x94\x95\x96"//主菜单Main
@@ -1692,8 +1693,8 @@
 	#define MSG_M218_INVALID_EXTRUDER "M218 Invalid extruder "
 	#define MSG_ERR_NO_THERMISTORS "No thermistors - no temperature"
 	#define MSG_M109_INVALID_EXTRUDER "M109 Invalid extruder "
-	#define MSG_HEATING "Heating..."
-	#define MSG_HEATING_COMPLETE "Heating done."
+    #define MSG_HEATING "\xc1\xa6\x84"
+	#define MSG_HEATING_COMPLETE "\xc1\xa6OK."
 	#define MSG_BED_HEATING "Bed Heating."
 	#define MSG_BED_DONE "Bed done."
 	#define MSG_M115_REPORT "FIRMWARE_NAME:Marlin V1; Sprinter/grbl mashup for gen6 FIRMWARE_URL:" FIRMWARE_URL " PROTOCOL_VERSION:" PROTOCOL_VERSION " MACHINE_TYPE:" MACHINE_NAME " EXTRUDER_COUNT:" STRINGIFY(EXTRUDERS) " UUID:" MACHINE_UUID "\n"

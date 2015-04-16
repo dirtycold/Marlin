@@ -108,8 +108,14 @@ void  CardReader::lsDive(const char *prepend,SdFile parent)
       
       if(!filenameIsDir)
       {
+      #ifdef HENGTONG_SUFFIX_ZWXJ
+		if(p.name[8]!='Z') continue;
+		if(p.name[9]!='W') continue;
+		if(p.name[10]!='X') continue;
+	  #else
         if(p.name[8]!='G') continue;
         if(p.name[9]=='~') continue;
+      #endif
       }
       //if(cnt++!=nr) continue;
       createFilename(filename,p);

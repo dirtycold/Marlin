@@ -1,0 +1,5 @@
+// Hengtong 150 Specific Configuration
+
+#define HENGTONG_DEFAULT_AXIS_STEPS_PER_UNIT {40,40,400.0,75}
+#define HENGTONG_TEMP_SENSOR_BED 0
+// #define HENGTONG_SUFFIX_ZWXJ
